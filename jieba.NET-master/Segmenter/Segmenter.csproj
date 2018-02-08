@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+    <RootNamespace>JiebaNet.Segmenter</RootNamespace>
+    <AssemblyName>JiebaNet.Segmenter</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\char_state_tab.json" />
+    <None Remove="Resources\dict.txt" />
+    <None Remove="Resources\pos_prob_emit.json" />
+    <None Remove="Resources\pos_prob_start.json" />
+    <None Remove="Resources\pos_prob_trans.json" />
+    <None Remove="Resources\prob_emit.json" />
+    <None Remove="Resources\prob_trans.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\char_state_tab.json">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\dict.txt">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\pos_prob_emit.json">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\pos_prob_start.json">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\pos_prob_trans.json">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\prob_emit.json">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\prob_trans.json">
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="1.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+</Project>
