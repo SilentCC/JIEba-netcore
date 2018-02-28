@@ -4,25 +4,13 @@ using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
-namespace jieba.NET
+namespace Test
 {
-    
     class Program
     {
-       
         static void Main(string[] args)
         {
-            List<string> stopWords = new List<string>();
-             string stopUrl = "./stopwords.txt";
-
-            StreamReader rd = File.OpenText(stopUrl);
-            string ss = "";
-            while ((ss = rd.ReadLine()) != null)
-            {
-                stopWords.Add(ss);
-            }
-
+           
             var segmenter = new JiebaSegmenter();
             var segments = segmenter.Cut("我来到北京清华大学", cutAll: true);
             Console.WriteLine("【全模式】：{0}", string.Join("/ ", segments));

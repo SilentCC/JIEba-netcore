@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analyser", "Analyser\Analys
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segmenter", "Segmenter\Segmenter.csproj", "{C564CDCB-B52B-455E-86E9-FC0DAE37EF08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{37B4E86E-2759-47CE-A59A-4301EE500BD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C564CDCB-B52B-455E-86E9-FC0DAE37EF08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C564CDCB-B52B-455E-86E9-FC0DAE37EF08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C564CDCB-B52B-455E-86E9-FC0DAE37EF08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B4E86E-2759-47CE-A59A-4301EE500BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B4E86E-2759-47CE-A59A-4301EE500BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B4E86E-2759-47CE-A59A-4301EE500BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B4E86E-2759-47CE-A59A-4301EE500BD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
