@@ -19,3 +19,6 @@ ps: 修改了JIEba分词，导致的高亮bug
   TokenStream = analyzer.GetTokenStream(str,indexReader);
 
 ```
+
+ # 相关文档
+[JIEba.net 集成到Lucene.Net的过程](https://www.cnblogs.com/dacc123/p/8431369.html) 
