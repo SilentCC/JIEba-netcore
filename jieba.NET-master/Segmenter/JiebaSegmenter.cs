@@ -156,7 +156,7 @@ namespace JiebaNet.Segmenter
             }
             else
             {
-                var xx = Cut2(text, hmm: hmm);
+                //var xx = Cut2(text, hmm: hmm);
                 foreach (var w in Cut2(text, hmm: hmm))
                 {
                     var width = w.value.Length;
