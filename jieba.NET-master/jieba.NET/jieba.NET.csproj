@@ -1,15 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
+   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Lucene.JIEba.Net</PackageId>
+    <PackageVersion>1.0.15</PackageVersion>
+    <Authors>SilentCC</Authors>
+    <Description>JIEba.Lucene.Net is an analyzer tools for lucene.net which is kind to chinese</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/SilentCC/JIEba-netcore2.0/</PackageProjectUrl>
+    <Copyright>Copyright 2019 (c) AgileLabs. All rights reserved.</Copyright>
+    <PackageTags>Analyzer Segment JIEba.net core2.0</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-
 
   <ItemGroup>
     <ProjectReference Include="..\Analyser\Analyser.csproj" />
     <ProjectReference Include="..\Segmenter\Segmenter.csproj" />
-   
   </ItemGroup>
 
   <ItemGroup>

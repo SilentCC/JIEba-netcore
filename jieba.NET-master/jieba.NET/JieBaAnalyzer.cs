@@ -6,6 +6,7 @@ using Lucene.Net.Analysis.Util;
 using System.IO;
 using JiebaNet.Segmenter;
 
+
 namespace jieba.NET
 {
     public class JieBaAnalyzer
