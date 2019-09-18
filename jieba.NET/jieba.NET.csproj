@@ -22,11 +22,12 @@
     <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
     <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00005" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.4.0" />
+      <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="stopwords.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="stopwords.txt" />
+    <EmbeddedResource Include="Resources\stopwords.txt" />
   </ItemGroup>
 </Project>
