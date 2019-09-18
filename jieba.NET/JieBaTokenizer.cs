@@ -40,6 +40,11 @@ namespace jieba.NET
             Init();
         }
 
+        public Dictionary<string, int> StopWords
+        {
+            get => _stopWords;
+        }
+
         private void LoadStopWords()
         {
             var fileProvider = new EmbeddedFileProvider(GetType().GetTypeInfo().Assembly);
