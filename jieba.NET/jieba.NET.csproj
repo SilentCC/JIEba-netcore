@@ -2,8 +2,8 @@
 
    <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Lucene.JIEba.Net</PackageId>
-    <PackageVersion>1.0.15</PackageVersion>
+    <PackageId>Lucene.JIEba.net</PackageId>
+    <PackageVersion>1.0.16</PackageVersion>
     <Authors>SilentCC</Authors>
     <Description>JIEba.Lucene.Net is an analyzer tools for lucene.net which is kind to chinese</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

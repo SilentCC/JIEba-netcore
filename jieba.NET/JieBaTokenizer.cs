@@ -30,8 +30,6 @@ namespace jieba.NET
 
         private TokenizerMode mode;
 
-
-
         public JieBaTokenizer(TextReader input,TokenizerMode Mode)
             :base(AttributeFactory.DEFAULT_ATTRIBUTE_FACTORY,input)
         {
@@ -91,7 +89,6 @@ namespace jieba.NET
                 JiebaNet.Segmenter.Token word = iter.Current;
 
                 token = new Lucene.Net.Analysis.Token(word.Word, word.StartIndex,word.EndIndex);
-               // Console.WriteLine("xxxxxxxxxxxxxxxx分词："+word.Word+"xxxxxxxxxxx起始位置："+word.StartIndex+"xxxxxxxxxx结束位置"+word.EndIndex);
                 start += length;
                 return token;
 

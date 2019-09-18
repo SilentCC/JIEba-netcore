@@ -21,7 +21,7 @@ namespace Test
             segments = segmenter.Cut("WebApi 教程");  // 默认为精确模式，同时也使用HMM模型
             Console.WriteLine("【新词识别】：{0}", string.Join("/ ", segments));
 
-            segments = segmenter.CutForSearch("webapi 教程"); // 搜索引擎模式
+            segments = segmenter.CutForSearch("软件开发代码规范"); // 搜索引擎模式
             Console.WriteLine("【搜索引擎模式】：{0}", string.Join("/ ", segments));
 
             segments = segmenter.Cut("webapi 教程");
