@@ -29,7 +29,7 @@ namespace jieba.NET
         private Dictionary<string, int> _stopWords = new Dictionary<string, int>();
         private List<JiebaNet.Segmenter.Token> _wordList = new List<JiebaNet.Segmenter.Token>();
 
-        private IEnumerator<JiebaNet.Segmenter.Token> iter;
+        private IEnumerator<JiebaNet.Segmenter.Token> _iter;
 
         public JieBaTokenizer(TextReader input, TokenizerMode Mode)
             : base(AttributeFactory.DEFAULT_ATTRIBUTE_FACTORY, input)
@@ -94,11 +94,10 @@ namespace jieba.NET
         private Lucene.Net.Analysis.Token Next()
         {
             var length = 0;
-            var res = iter.MoveNext();
+            var res = _iter.MoveNext();
             if (res)
             {
-                JiebaNet.Segmenter.Token word = iter.Current;
-
+                var word = _iter.Current;
                 var token = new Lucene.Net.Analysis.Token(word.Word, word.StartIndex, word.EndIndex);
                 _start += length;
                 return token;
@@ -114,7 +113,7 @@ namespace jieba.NET
             RemoveStopWords(_segmenter.Tokenize(_inputText, _mode));
 
             _start = 0;
-            iter = _wordList.GetEnumerator();
+            _iter = _wordList.GetEnumerator();
         }
 
         private void RemoveStopWords(IEnumerable<JiebaNet.Segmenter.Token> words)
