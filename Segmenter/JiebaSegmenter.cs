@@ -366,13 +366,11 @@ namespace JiebaNet.Segmenter
         internal IEnumerable<WordInfo> CutIt2(string text, Func<string, IEnumerable<string>> cutMethod,
                                            Regex reHan, Regex reSkip, bool cutAll)
         {
-            //Console.WriteLine("*********************************我开始分词了*******************");
             var result = new List<WordInfo>();
             var blocks = reHan.Split(text);
             var start = 0;
             foreach(var blk in blocks)
             {
-                //Console.WriteLine("?????????????当前的串："+blk);
                 if(string.IsNullOrWhiteSpace(blk))
                 {
                     start += blk.Length;
@@ -380,10 +378,8 @@ namespace JiebaNet.Segmenter
                 }
                 if(reHan.IsMatch(blk))
                 {
-                    
                     foreach(var word in cutMethod(blk))
                     {
-                        //Console.WriteLine("？？？？？blk 分词：" + word + "????????初始位置：" + start);
                         result.Add(new WordInfo(word,start));
                         start += word.Length;
                     }
@@ -395,7 +391,6 @@ namespace JiebaNet.Segmenter
                     {
                         if(reSkip.IsMatch(x))
                         {
-                            //Console.WriteLine("？？？？？ x  reSkip 分词：" + x + "????????初始位置：" + start);
                             result.Add(new WordInfo(x,start));
                             start += x.Length;
                         }
@@ -403,13 +398,12 @@ namespace JiebaNet.Segmenter
                         {
                             foreach(var ch in x)
                             {
-                                //Console.WriteLine("？？？？？ch  分词：" + ch + "????????初始位置：" + start);
                                 result.Add(new WordInfo(ch.ToString(),start));
                                 start += ch.ToString().Length;
                             }
                         }
                         else{
-                            //Console.WriteLine("？？？？？x  分词：" + x + "????????初始位置：" + start);
+                          
                             result.Add(new WordInfo(x,start));
                             start += x.Length;
                             
