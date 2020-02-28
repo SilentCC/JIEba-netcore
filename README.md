@@ -1,4 +1,4 @@
-# JIEba-netcore2.0
+# JIEba-netcore
 
 基于[jieba.NETCore](https://github.com/linezero/jieba.NET) 
 
