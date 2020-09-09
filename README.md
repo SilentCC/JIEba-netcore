@@ -19,6 +19,8 @@ ps: 修改了JIEba分词，导致的高亮bug
   TokenStream = analyzer.GetTokenStream(str,indexReader);
 
 ```
+>[具体demo参考](https://gitee.com/shshshdy/net-core-tool) 
 
- # 相关文档
-[JIEba.net 集成到Lucene.Net的过程](https://www.cnblogs.com/dacc123/p/8431369.html) 
+# 感谢原作
+
+在[原作](https://github.com/SilentCC/JIEba-netcore2.0/)的基础上,修改了加载用户分词的BUG.

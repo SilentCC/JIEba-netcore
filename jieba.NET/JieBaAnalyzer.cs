@@ -9,19 +9,22 @@ using JiebaNet.Segmenter;
 
 namespace jieba.NET
 {
-    public class JieBaAnalyzer
-        :Analyzer
+    public class JieBaAnalyzer : Analyzer
     {
-        public TokenizerMode mode;
-        public JieBaAnalyzer(TokenizerMode Mode)
-            :base()
+        TokenizerMode _mode;
+        bool _defaultIgnore;
+        bool _defaultUserDict;
+        public JieBaAnalyzer(TokenizerMode Mode, bool defaultIgnore = false, bool defaultUserDict = false)
+            : base()
         {
-            this.mode = Mode;
+            _mode = Mode;
+            _defaultIgnore = defaultIgnore;
+            _defaultUserDict = defaultUserDict;
         }
 
-        protected override TokenStreamComponents CreateComponents(string filedName,TextReader reader)
+        protected override TokenStreamComponents CreateComponents(string filedName, TextReader reader)
         {
-            var tokenizer = new JieBaTokenizer(reader,mode);
+            var tokenizer = new JieBaTokenizer(reader, _mode, _defaultIgnore, _defaultUserDict);
 
             var tokenstream = (TokenStream)new LowerCaseFilter(Lucene.Net.Util.LuceneVersion.LUCENE_48, tokenizer);
 
