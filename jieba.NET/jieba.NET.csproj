@@ -3,7 +3,7 @@
    <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Lucene.JIEba.NetCore</PackageId>
-    <PackageVersion>1.1.2</PackageVersion>
+    <PackageVersion>1.1.3</PackageVersion>
     <Authors>shshshdy</Authors>
     <Description>JIEba.Lucene.Net is an analyzer tools for lucene.net which is kind to chinese</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -12,7 +12,8 @@
     <PackageTags>Analyzer Segment JIEba.net core2.0</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>shshshdy</Company>
-    <Version>1.1.2</Version>
+    <Version>1.1.3</Version>
+    <PackageReleaseNotes>删除多余依赖</PackageReleaseNotes>
   </PropertyGroup>
     
 
@@ -20,7 +21,6 @@
       <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
       <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00005" />
       <PackageReference Include="System.Text.Encoding.CodePages" Version="4.4.0" />
-      <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\dict.txt" />
