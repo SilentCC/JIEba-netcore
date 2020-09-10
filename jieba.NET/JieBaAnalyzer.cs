@@ -12,19 +12,16 @@ namespace jieba.NET
     public class JieBaAnalyzer : Analyzer
     {
         TokenizerMode _mode;
-        bool _defaultIgnore;
         bool _defaultUserDict;
-        public JieBaAnalyzer(TokenizerMode Mode, bool defaultIgnore = false, bool defaultUserDict = false)
-            : base()
+        public JieBaAnalyzer(TokenizerMode Mode, bool defaultUserDict = false) : base()
         {
             _mode = Mode;
-            _defaultIgnore = defaultIgnore;
             _defaultUserDict = defaultUserDict;
         }
 
         protected override TokenStreamComponents CreateComponents(string filedName, TextReader reader)
         {
-            var tokenizer = new JieBaTokenizer(reader, _mode, _defaultIgnore, _defaultUserDict);
+            var tokenizer = new JieBaTokenizer(reader, _mode, _defaultUserDict);
 
             var tokenstream = (TokenStream)new LowerCaseFilter(Lucene.Net.Util.LuceneVersion.LUCENE_48, tokenizer);
 
