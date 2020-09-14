@@ -2,30 +2,32 @@
 
    <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Lucene.JIEba.net</PackageId>
-    <PackageVersion>1.1.1</PackageVersion>
-    <Authors>SilentCC</Authors>
+    <PackageId>Lucene.JIEba.NetCore</PackageId>
+    <PackageVersion>1.1.4</PackageVersion>
+    <Authors>shshshdy</Authors>
     <Description>JIEba.Lucene.Net is an analyzer tools for lucene.net which is kind to chinese</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageProjectUrl>https://github.com/SilentCC/JIEba-netcore2.0/</PackageProjectUrl>
-    <Copyright>Copyright 2019 (c) AgileLabs. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/shshshdy/JIEba-netcore</PackageProjectUrl>
+    <Copyright>Copyright 2020 (c) AgileLabs. All rights reserved.</Copyright>
     <PackageTags>Analyzer Segment JIEba.net core2.0</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>shshshdy</Company>
+    <Version>1.1.4</Version>
+    <PackageReleaseNotes>删除多余依赖</PackageReleaseNotes>
   </PropertyGroup>
     
 
   <ItemGroup>
-      <PackageReference Include="Lucene.JIEba.Analyzer" Version="1.0.0" />
-      <PackageReference Include="Lucene.JIEba.Segment" Version="1.0.1" />
-      <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
       <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00005" />
       <PackageReference Include="System.Text.Encoding.CodePages" Version="4.4.0" />
-      <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="stopwords.txt" />
+    <None Remove="Resources\dict.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\stopwords.txt" />
+    <EmbeddedResource Include="Resources\dict.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Analyser\Analyser.csproj" />
   </ItemGroup>
 </Project>

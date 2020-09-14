@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="dict.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="dict.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\jieba.NET\jieba.NET.csproj" />
   </ItemGroup>
 

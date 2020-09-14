@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using jieba.NET;
 using Xunit;
+using System.Reflection;
 
 namespace Test
 {
@@ -15,8 +16,9 @@ namespace Test
         public void TestCut()
         {
             var segmenter = new JiebaSegmenter();
+            segmenter.LoadUserDict(@"D:\lucene\dict.txt");
+            segmenter.LoadUserDictForEmbedded(Assembly.GetCallingAssembly(),"dict.txt");
             var segments = segmenter.Cut("我来到北京清华大学", cutAll: true);
-
             var resultWords = new List<string> {"我", "来到", "北京", "清华", "清华大学", "华大", "大学"};
             Compared(segments, resultWords);
             
