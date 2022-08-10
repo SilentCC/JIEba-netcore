@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jieba.NET", "jieba.NET\jieba.NET.csproj", "{89EFA758-206C-4681-ACF6-6F2AB2415279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jieba.NET", "jieba.NET\jieba.NET.csproj", "{89EFA758-206C-4681-ACF6-6F2AB2415279}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analyser", "Analyser\Analyser.csproj", "{4F0DEF27-C5FE-448F-9B08-F8C2254A1075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analyser", "Analyser\Analyser.csproj", "{4F0DEF27-C5FE-448F-9B08-F8C2254A1075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segmenter", "Segmenter\Segmenter.csproj", "{C564CDCB-B52B-455E-86E9-FC0DAE37EF08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Segmenter", "Segmenter\Segmenter.csproj", "{C564CDCB-B52B-455E-86E9-FC0DAE37EF08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{37B4E86E-2759-47CE-A59A-4301EE500BD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{37B4E86E-2759-47CE-A59A-4301EE500BD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{2D841415-1FFF-414B-9A51-50F97D670E5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{37B4E86E-2759-47CE-A59A-4301EE500BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37B4E86E-2759-47CE-A59A-4301EE500BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37B4E86E-2759-47CE-A59A-4301EE500BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D841415-1FFF-414B-9A51-50F97D670E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D841415-1FFF-414B-9A51-50F97D670E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D841415-1FFF-414B-9A51-50F97D670E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D841415-1FFF-414B-9A51-50F97D670E5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB0FB2D0-F6BA-4D78-A12D-37BBDDAD8BE0}
 	EndGlobalSection
 EndGlobal
