@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\jieba.NET\jieba.NET.csproj" />
+    <ProjectReference Include="..\Segmenter\Segmenter.csproj" />
   </ItemGroup>
 
   <ItemGroup>
