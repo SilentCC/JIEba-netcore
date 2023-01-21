@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <PackageId>Cnblogs.Jieba.Net</PackageId>
+    <Description>Jieba for Lucece.Net</Description>
     <Authors>SilentCC</Authors>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/cnblogs/jieba-dotnet</PackageProjectUrl>
