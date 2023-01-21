@@ -9,26 +9,21 @@ using Microsoft.Extensions.FileProviders;
 
 namespace jieba.NET
 {
-    public class JieBaTokenizer
-        : Tokenizer
+    public class JieBaTokenizer : Tokenizer
     {
-        private static bool _initial = false;
         private string _inputText;
-        private bool _originalResult = false;
-        private int _start = 0;
+        private int _start;
 
         private readonly string _stropWordsPath = "Resources/stopwords.txt";
-
         private readonly JiebaSegmenter _segmenter;
-        private TokenizerMode _mode;
+        private readonly TokenizerMode _mode;
+        private readonly Dictionary<string, int> _stopWords = new Dictionary<string, int>();
+        private readonly List<JiebaNet.Segmenter.Token> _wordList = new List<JiebaNet.Segmenter.Token>();
+
         private ICharTermAttribute _termAtt;
         private IOffsetAttribute _offsetAtt;
         private IPositionIncrementAttribute _posIncrAtt;
         private ITypeAttribute _typeAtt;
-
-        private Dictionary<string, int> _stopWords = new Dictionary<string, int>();
-        private List<JiebaNet.Segmenter.Token> _wordList = new List<JiebaNet.Segmenter.Token>();
-
         private IEnumerator<JiebaNet.Segmenter.Token> _iter;
 
         public JieBaTokenizer(TextReader input, TokenizerMode Mode)
@@ -50,17 +45,15 @@ namespace jieba.NET
             var fileProvider = new EmbeddedFileProvider(GetType().GetTypeInfo().Assembly);
             var fileInfo = fileProvider.GetFileInfo(_stropWordsPath);
 
-            using (var reader = new StreamReader(fileInfo.CreateReadStream()))
+            using var reader = new StreamReader(fileInfo.CreateReadStream());
+            var s = "";
+            while ((s = reader.ReadLine()) != null)
             {
-                var s = "";
-                while ((s = reader.ReadLine()) != null)
-                {
-                    if (String.IsNullOrEmpty(s))
-                        continue;
-                    if (_stopWords.ContainsKey(s))
-                        continue;
-                    _stopWords.Add(s, 1);
-                }
+                if (string.IsNullOrEmpty(s))
+                    continue;
+                if (_stopWords.ContainsKey(s))
+                    continue;
+                _stopWords.Add(s, 1);
             }
         }
 
@@ -77,7 +70,7 @@ namespace jieba.NET
             return input.ReadToEnd();
         }
 
-        public sealed override Boolean IncrementToken()
+        public sealed override bool IncrementToken()
         {
             ClearAttributes();
 
