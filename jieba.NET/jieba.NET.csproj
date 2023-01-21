@@ -2,22 +2,25 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-    <PackageId>Lucene.JIEba.net</PackageId>
-    <PackageVersion>1.1.1</PackageVersion>
+    <PackageId>Cnblogs.Jieba.Net</PackageId>
     <Authors>SilentCC</Authors>
-    <Description>JIEba.Lucene.Net is an analyzer tools for lucene.net which is kind to chinese</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageProjectUrl>https://github.com/SilentCC/JIEba-netcore2.0/</PackageProjectUrl>
-    <Copyright>Copyright 2019 (c) AgileLabs. All rights reserved.</Copyright>
-    <PackageTags>Analyzer Segment JIEba.net core2.0</PackageTags>
+    <PackageProjectUrl>https://github.com/cnblogs/jieba-dotnet</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/cnblogs/jieba-dotnet</RepositoryUrl>
+    <PackageTags>lucene.net,search</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Lucene.Net" Version="4.8.0-beta00016" />
     <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00016" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.2" />
+    <PackageReference Include="Teronis.MSBuild.Packaging.ProjectBuildInPackage" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="stopwords.txt" />
@@ -26,7 +29,11 @@
     <EmbeddedResource Include="Resources\stopwords.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Analyser\Analyser.csproj" />
-    <ProjectReference Include="..\Segmenter\Segmenter.csproj" />
+    <ProjectReference Include="..\Analyser\Analyser.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\Segmenter\Segmenter.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
   </ItemGroup>
 </Project>
