@@ -20,7 +20,7 @@ namespace jieba.NET
 
         protected override TokenStreamComponents CreateComponents(string filedName, TextReader reader)
         {
-            var tokenizer = new JieBaTokenizer(reader, _mode);
+            var tokenizer = new JieBaTokenizer(reader, _mode, _skipStopwords);
 
             var tokenstream = (TokenStream)new LowerCaseFilter(Lucene.Net.Util.LuceneVersion.LUCENE_48, tokenizer);
 
