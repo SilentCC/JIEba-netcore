@@ -9,10 +9,13 @@ namespace jieba.NET
     public class JieBaAnalyzer : Analyzer
     {
         public TokenizerMode _mode;
-        public JieBaAnalyzer(TokenizerMode Mode)
+        private readonly bool _skipStopwords;
+
+        public JieBaAnalyzer(TokenizerMode Mode, bool skipStopwords = false)
             : base()
         {
             _mode = Mode;
+            _skipStopwords = skipStopwords;
         }
 
         protected override TokenStreamComponents CreateComponents(string filedName, TextReader reader)

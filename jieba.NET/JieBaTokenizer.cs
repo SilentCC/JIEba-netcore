@@ -17,6 +17,7 @@ namespace jieba.NET
         private readonly string _stropWordsPath = "Resources/stopwords.txt";
         private readonly JiebaSegmenter _segmenter;
         private readonly TokenizerMode _mode;
+        private readonly bool _skipStopwords;
         private readonly Dictionary<string, int> _stopWords = new Dictionary<string, int>();
         private readonly List<JiebaNet.Segmenter.Token> _wordList = new List<JiebaNet.Segmenter.Token>();
 
@@ -26,11 +27,12 @@ namespace jieba.NET
         private ITypeAttribute _typeAtt;
         private IEnumerator<JiebaNet.Segmenter.Token> _iter;
 
-        public JieBaTokenizer(TextReader input, TokenizerMode Mode)
+        public JieBaTokenizer(TextReader input, TokenizerMode Mode, bool skipStopwords = false)
             : base(AttributeFactory.DEFAULT_ATTRIBUTE_FACTORY, input)
         {
             _segmenter = new JiebaSegmenter();
             _mode = Mode;
+            _skipStopwords = skipStopwords;
             LoadStopWords();
             Init();
         }
@@ -120,7 +122,7 @@ namespace jieba.NET
 
             foreach (var x in words)
             {
-                if (!_stopWords.ContainsKey(x.Word))
+                if (_skipStopwords || !_stopWords.ContainsKey(x.Word))
                 {
                     _wordList.Add(x);
                 }
