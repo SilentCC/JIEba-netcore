@@ -1,6 +1,4 @@
 ﻿using JiebaNet.Segmenter;
-using System;
-using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -74,10 +72,8 @@ namespace Test
             var tokenizer = new JieBaTokenizer(TextReader.Null, TokenizerMode.Default);
 
             Assert.NotEmpty(tokenizer.StopWords);
-
             Assert.True(tokenizer.StopWords.ContainsKey("是"));
             Assert.True(tokenizer.StopWords.ContainsKey("什么"));
-
         }
     }
 }
