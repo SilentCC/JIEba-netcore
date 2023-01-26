@@ -37,7 +37,7 @@ namespace JiebaNet.Segmenter
 
         public JiebaSegmenter()
         {
-            UserWordTagTab = new Dictionary<string, string>();
+            UserWordTagTab = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         }
 
         /// <summary>
