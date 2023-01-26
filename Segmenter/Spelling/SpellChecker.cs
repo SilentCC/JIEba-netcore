@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using JiebaNet.Segmenter.Common;
+using Segmenter.Common;
 
 namespace JiebaNet.Segmenter.Spelling
 {
@@ -20,7 +21,7 @@ namespace JiebaNet.Segmenter.Spelling
         {
             var wordDict = WordDictionary.Instance;
             WordTrie = new Trie();
-            FirstChars = new Dictionary<char, HashSet<char>>();
+            FirstChars = new Dictionary<char, HashSet<char>>(CharComparer.IgnoreCase);
 
             foreach (var wd in wordDict.Trie)
             {
