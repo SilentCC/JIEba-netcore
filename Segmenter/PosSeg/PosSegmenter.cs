@@ -42,7 +42,7 @@ namespace JiebaNet.Segmenter.PosSeg
         {
             try
             {
-                _wordTagTab = new Dictionary<string, string>();
+                _wordTagTab = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                 var lines = FileExtension.ReadEmbeddedAllLines(ConfigManager.MainDictFile);
                 foreach (var line in lines)
                 {
@@ -86,7 +86,7 @@ namespace JiebaNet.Segmenter.PosSeg
             if (_segmenter.UserWordTagTab.IsNotEmpty())
             {
                 _wordTagTab.Update(_segmenter.UserWordTagTab);
-                _segmenter.UserWordTagTab = new Dictionary<string, string>();
+                _segmenter.UserWordTagTab = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             }
         }
 
@@ -256,7 +256,7 @@ namespace JiebaNet.Segmenter.PosSeg
                             {
                                 tokens.Add(new Pair(x, "m"));
                             }
-                            else if(RegexEnglishWords.IsMatch(x))
+                            else if (RegexEnglishWords.IsMatch(x))
                             {
                                 tokens.Add(new Pair(x, "eng"));
                             }
