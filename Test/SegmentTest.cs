@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using jieba.NET;
 using Xunit;
+using FluentAssertions;
 
 namespace Test
 {
@@ -27,8 +28,9 @@ namespace Test
             Compared(segments, resultWords);
 
             segments = segmenter.CutForSearch("小明硕士毕业于中国科学院计算所，后在日本京都大学深造"); // 搜索引擎模式
-            resultWords = new List<string> {"小明","硕士" ,"毕业","于","中国" ,"科学","学院", "科学院" ,"中国科学院","计算", "计算所","，" , "后"
-                ,"在" ,"日本","京都" ,"大学", "日本京都大学" ,"深造"};
+            resultWords = new List<string> {
+                "小明", "硕士", "毕业", "于", "中国", "科学", "学院", "科学院", "中国科学院","计算", "计算所", "，",
+                "后", "在" , "日本", "京都", "大学", "日本京都大学", "深造"};
             Compared(segments, resultWords);
 
             segments = segmenter.Cut("结过婚的和尚未结过婚的");
@@ -40,6 +42,10 @@ namespace Test
             resultWords = new List<string> { "快", "奔三" };
 
             Compared(segments, resultWords);
+
+            segments = segmenter.Cut("ASP.NET Core", false, false);
+            var actual = string.Join(",", segments);
+            actual.Should().Be("ASP.NET,Core");
         }
 
         private void Compared(IEnumerable<string> segments, List<string> resultWords)

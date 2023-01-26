@@ -76,7 +76,7 @@ namespace JiebaNet.Segmenter
             return CutIt(text, cutMethod, reHan, reSkip, cutAll);
         }
 
-        public IEnumerable<WordInfo> Cut2(string text,bool cutAll=false,bool hmm=true)
+        public IEnumerable<WordInfo> Cut2(string text, bool cutAll = false, bool hmm = true)
         {
             var reHan = RegexChineseDefault;
             var reSkip = RegexSkipDefault;
@@ -185,7 +185,7 @@ namespace JiebaNet.Segmenter
 
                     result.Add(new Token(w.value, w.position, w.position + width));
 
-                 }
+                }
             }
 
             return result;
@@ -369,44 +369,45 @@ namespace JiebaNet.Segmenter
             var result = new List<WordInfo>();
             var blocks = reHan.Split(text);
             var start = 0;
-            foreach(var blk in blocks)
+            foreach (var blk in blocks)
             {
-                if(string.IsNullOrWhiteSpace(blk))
+                if (string.IsNullOrWhiteSpace(blk))
                 {
                     start += blk.Length;
                     continue;
                 }
-                if(reHan.IsMatch(blk))
+                if (reHan.IsMatch(blk))
                 {
-                    foreach(var word in cutMethod(blk))
+                    foreach (var word in cutMethod(blk))
                     {
-                        result.Add(new WordInfo(word,start));
+                        result.Add(new WordInfo(word, start));
                         start += word.Length;
                     }
                 }
                 else
                 {
                     var tmp = reSkip.Split(blk);
-                    foreach(var x in tmp)
+                    foreach (var x in tmp)
                     {
-                        if(reSkip.IsMatch(x))
+                        if (reSkip.IsMatch(x))
                         {
-                            result.Add(new WordInfo(x,start));
+                            result.Add(new WordInfo(x, start));
                             start += x.Length;
                         }
-                        else if(!cutAll)
+                        else if (!cutAll)
                         {
-                            foreach(var ch in x)
+                            foreach (var ch in x)
                             {
-                                result.Add(new WordInfo(ch.ToString(),start));
+                                result.Add(new WordInfo(ch.ToString(), start));
                                 start += ch.ToString().Length;
                             }
                         }
-                        else{
-                          
-                            result.Add(new WordInfo(x,start));
+                        else
+                        {
+
+                            result.Add(new WordInfo(x, start));
                             start += x.Length;
-                            
+
                         }
                     }
                 }
@@ -415,11 +416,16 @@ namespace JiebaNet.Segmenter
             return result;
         }
 
-        internal IEnumerable<string> CutIt(string text, Func<string, IEnumerable<string>> cutMethod,
-                                           Regex reHan, Regex reSkip, bool cutAll)
+        internal IEnumerable<string> CutIt(
+            string text,
+            Func<string, IEnumerable<string>> cutMethod,
+            Regex reHan,
+            Regex reSkip,
+            bool cutAll)
         {
             var result = new List<string>();
             var blocks = reHan.Split(text);
+
             foreach (var blk in blocks)
             {
                 if (string.IsNullOrWhiteSpace(blk))
@@ -567,5 +573,5 @@ namespace JiebaNet.Segmenter
         Search
     }
 
-  
+
 }
