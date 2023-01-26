@@ -1,4 +1,5 @@
 using JiebaNet.Segmenter.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace JiebaNet.Analyser
         public IdfLoader(string idfPath = null)
         {
             IdfFilePath = string.Empty;
-            IdfFreq = new Dictionary<string, double>();
+            IdfFreq = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
             MedianIdf = 0.0;
             if (!string.IsNullOrWhiteSpace(idfPath))
             {
@@ -31,13 +32,16 @@ namespace JiebaNet.Analyser
             {
                 IdfFilePath = idfPath;
                 var lines = FileExtension.ReadEmbeddedAllLines(idfPath, Encoding.UTF8);
-                IdfFreq = new Dictionary<string, double>();
+                IdfFreq = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
                 foreach (var line in lines)
                 {
                     var parts = line.Trim().Split(' ');
                     var word = parts[0];
                     var freq = double.Parse(parts[1]);
-                    IdfFreq[word] = freq;
+                    if (!IdfFreq.ContainsKey(word))
+                    {
+                        IdfFreq[word] = freq;
+                    }
                 }
 
                 MedianIdf = IdfFreq.Values.OrderBy(v => v).ToList()[IdfFreq.Count / 2];

@@ -29,6 +29,7 @@ namespace JiebaNet.Analyser
             {
                 Segmenter = segmenter;
             }
+
             PosSegmenter = new PosSegmenter(Segmenter);
             SetStopWords(ConfigManager.StopWordsFile);
             if (StopWords.IsEmpty())
@@ -102,7 +103,8 @@ namespace JiebaNet.Analyser
             var freq = GetWordIfidf(text, allowPos);
             return freq.OrderByDescending(p => p.Value).Select(p => new WordWeightPair()
             {
-                Word = p.Key, Weight = p.Value
+                Word = p.Key,
+                Weight = p.Value
             }).Take(count);
         }
     }
