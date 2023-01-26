@@ -18,7 +18,7 @@ namespace jieba.NET
         private readonly JiebaSegmenter _segmenter;
         private readonly TokenizerMode _mode;
         private readonly bool _skipStopwords;
-        private readonly Dictionary<string, int> _stopWords = new Dictionary<string, int>();
+        private readonly Dictionary<string, int> _stopWords = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
         private readonly List<JiebaNet.Segmenter.Token> _wordList = new List<JiebaNet.Segmenter.Token>();
 
         private ICharTermAttribute _termAtt;
@@ -51,7 +51,8 @@ namespace jieba.NET
             var s = "";
             while ((s = reader.ReadLine()) != null)
             {
-                if (string.IsNullOrEmpty(s))
+                s = s.Trim();
+                if (string.IsNullOrWhiteSpace(s))
                     continue;
                 if (_stopWords.ContainsKey(s))
                     continue;

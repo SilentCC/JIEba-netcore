@@ -15,7 +15,7 @@ namespace JiebaNet.Segmenter
         private static readonly Lazy<WordDictionary> lazy = new Lazy<WordDictionary>(() => new WordDictionary());
         private static readonly string MainDict = ConfigManager.MainDictFile;
 
-        internal IDictionary<string, int> Trie = new Dictionary<string, int>();
+        internal IDictionary<string, int> Trie = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// total occurrence of all words.
@@ -44,31 +44,36 @@ namespace JiebaNet.Segmenter
                 var filePath = ConfigManager.MainDictFile;
                 var provider = new EmbeddedFileProvider(GetType().GetTypeInfo().Assembly);
                 var fileInfo = provider.GetFileInfo(filePath);
-                using (var sr = new StreamReader(fileInfo.CreateReadStream(), Encoding.UTF8))
+                using var sr = new StreamReader(fileInfo.CreateReadStream(), Encoding.UTF8);
+
+                string line = null;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    string line = null;
-                    while ((line = sr.ReadLine()) != null)
+                    var tokens = line.Split(' ');
+                    if (tokens.Length < 2)
                     {
-                        var tokens = line.Split(' ');
-                        if (tokens.Length < 2)
+                        Debug.Fail(string.Format("Invalid line: {0}", line));
+                        continue;
+                    }
+
+                    var word = tokens[0];
+                    if (Trie.ContainsKey(word))
+                    {
+                        Debug.WriteLine($"Skipped duplicated word: '{word}'");
+                        continue;
+                    }
+
+                    var freq = int.Parse(tokens[1]);
+
+                    Trie[word] = freq;
+                    Total += freq;
+
+                    foreach (var ch in Enumerable.Range(0, word.Length))
+                    {
+                        var wfrag = word.Sub(0, ch + 1);
+                        if (!Trie.ContainsKey(wfrag))
                         {
-                            Debug.Fail(string.Format("Invalid line: {0}", line));
-                            continue;
-                        }
-
-                        var word = tokens[0];
-                        var freq = int.Parse(tokens[1]);
-
-                        Trie[word] = freq;
-                        Total += freq;
-
-                        foreach (var ch in Enumerable.Range(0, word.Length))
-                        {
-                            var wfrag = word.Sub(0, ch + 1);
-                            if (!Trie.ContainsKey(wfrag))
-                            {
-                                Trie[wfrag] = 0;
-                            }
+                            Trie[wfrag] = 0;
                         }
                     }
                 }

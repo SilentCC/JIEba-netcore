@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using JiebaNet.Segmenter;
@@ -51,7 +52,8 @@ namespace JiebaNet.Analyser
             if (count <= 0) { count = 20; }
             return rank.OrderByDescending(p => p.Value).Select(p => new WordWeightPair()
             {
-                Word = p.Key, Weight = p.Value
+                Word = p.Key,
+                Weight = p.Value
             }).Take(count);
         }
 
@@ -65,7 +67,7 @@ namespace JiebaNet.Analyser
             }
 
             var g = new UndirectWeightedGraph();
-            var cm = new Dictionary<string, int>();
+            var cm = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
             var words = PosSegmenter.Cut(text).ToList();
 
             for (var i = 0; i < words.Count(); i++)
