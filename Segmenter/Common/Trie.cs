@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Primitives;
+using Segmenter.Common;
 
 namespace JiebaNet.Segmenter.Common
 {
@@ -15,7 +18,7 @@ namespace JiebaNet.Segmenter.Common
         {
             Char = ch;
             Frequency = 0;
-            
+
             // TODO: or an empty dict?
             //Children = null;
         }
@@ -29,7 +32,7 @@ namespace JiebaNet.Segmenter.Common
 
             if (Children == null)
             {
-                Children = new Dictionary<char, TrieNode>();
+                Children = new Dictionary<char, TrieNode>(CharComparer.IgnoreCase);
             }
 
             var c = s[pos];
