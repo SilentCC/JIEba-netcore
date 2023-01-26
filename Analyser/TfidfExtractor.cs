@@ -69,11 +69,11 @@ namespace JiebaNet.Analyser
             }
 
             // Calculate TF
-            var freq = new Dictionary<string, double>();
+            var freq = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
             foreach (var word in words)
             {
                 var w = word;
-                if (string.IsNullOrEmpty(w) || w.Trim().Length < 2 || StopWords.Contains(w.ToLower()))
+                if (string.IsNullOrEmpty(w) || w.Trim().Length < 2 || StopWords.Contains(w))
                 {
                     continue;
                 }
