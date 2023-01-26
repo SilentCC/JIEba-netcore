@@ -20,6 +20,10 @@ namespace Test
     {
         [Theory]
         [InlineData("ASP.NET Core", "asp.net,core")]
+        [InlineData("Lucene.Net", "lucene.net")]
+        [InlineData("Json.NET", "json.net")]
+        [InlineData("C#", "c#")]
+        [InlineData("C++", "c++")]
         [InlineData("学习.NET编程", "学习,.net,编程")]
         [InlineData("F#语法概览", "f#,语法,概览")]
         [InlineData("学习云原生开发", "学习,云原生,开发")]
